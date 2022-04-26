@@ -94,6 +94,9 @@ module.exports.get = async () => {
     }
   }
 
+  // Wait for the files to write to the disk
+  await new Promise(r => setTimeout(r, 10000));
+
   const events = await BlockReader.getEvents(symbol);
 
   const data = {
