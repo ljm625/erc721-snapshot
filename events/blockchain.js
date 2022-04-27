@@ -82,7 +82,7 @@ module.exports.get = async () => {
       await sleep(delay);
     }
 
-    console.log("Batch", i + 1, " From", start, "to", end);
+    console.log("Batch", i, " From", start, "to", end);
 
     await tryGetEvents(start, end, symbol);
 
@@ -92,6 +92,11 @@ module.exports.get = async () => {
     if (end > toBlock) {
       end = toBlock;
     }
+  }
+
+  if(start<=end){
+    console.log("Batch", i + 1, " From", start, "to", end);
+    await tryGetEvents(start, end, symbol);
   }
 
   // Wait for the files to write to the disk
